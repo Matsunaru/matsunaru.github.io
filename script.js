@@ -13,7 +13,7 @@ const contents = {
   `,
   links: `
     <h2>🔗 Links</h2>
-    <p><a href="https://github.com/Matsunaru" target="_blank"><img src="/img/github-mark.svg" alt="GitHub"></a></p>
+    <p><a href="https://github.com/Matsunaru" target="_blank"><img src="./img/github-mark.svg" alt="GitHub"></a></p>
   `,
   contact: `
     <h2>📬 Contact</h2>
