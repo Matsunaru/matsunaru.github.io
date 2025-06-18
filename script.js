@@ -2,25 +2,25 @@
 const contents = {
   about: `
     <h2>👨‍💻 About Me</h2>
-    <p>Cześć! Mam na imię Patryk i jestem początkującym programistą C++ i frontendu.</p>
-    <p>Lubię robić minimalistyczne projekty z fajnymi efektami i interakcjami.</p>
+    <p>Hi! I'm Patryk — an aspiring software developer with a strong focus on C++ and front-end technologies. I'm passionate about clean, minimalist design and enjoy crafting intuitive user experiences with subtle, engaging effects.</p>
+    <p>Although I'm at the beginning of my programming journey, I've already built several small applications and websites, constantly pushing myself to learn and improve. I thrive on solving problems, experimenting with modern UI/UX ideas, and turning creative concepts into working code.</p>
+    <p>I’m currently studying Computer Science and actively expanding my skills in both programming and design. I value code quality, clear structure, and lifelong learning. My goal? To become a developer who builds not just functioning apps — but experiences users love to interact with.</p>
+    <p>Let's build something amazing together!</p>
   `,
   projects: `
     <h2>💼 Projects</h2>
-    <ul>
-      <li>Menedżer haseł (JS + Chrome Extension)</li>
-      <li>Symulator Kolejki (C++)</li>
-      <li>Prosty RPG konsolowy</li>
-    </ul>
+    <div id="projects"></div>
   `,
   links: `
     <h2>🔗 Links</h2>
-    <p><a href="https://github.com/twojlogin" target="_blank">GitHub</a></p>
-    <p><a href="https://linkedin.com/in/twojlogin" target="_blank">LinkedIn</a></p>
+    <p><a href="https://github.com/Matsunaru" target="_blank"><img src="/img/github-mark.svg" alt="GitHub"></a></p>
   `,
   contact: `
     <h2>📬 Contact</h2>
-    <p>Email: <a href="mailto:twojemail@example.com">twojemail@example.com</a></p>
+    <p>
+  Email: <a href="mailto:error1998pl@gmail.com" id="emailLink">error1998pl@gmail.com</a>
+  <button id="copyButton" onclick="copyEmail()">📋 Copy</button>
+</p>
   `
 };
 
@@ -37,8 +37,16 @@ document.querySelectorAll('.menu-item').forEach(item => {
     note.dataset.type = type;
     note.innerHTML = `
       <span class="Close">X</span>
-      <p>${contents[type]}</p>
+      ${contents[type]}
     `;
+
+    document.getElementById('mainContent').appendChild(note);
+
+    // Fetch GitHub data if the type is "projects"
+    if (type === "projects") {
+    fetchgithubData();
+    }
+
 
     // Add functionality to close the note
     note.querySelector('.Close').addEventListener('click', () => {
@@ -90,7 +98,7 @@ document.querySelectorAll('.menu-item').forEach(item => {
     });
 
     // Add the note to the main content area
-    document.getElementById('mainContent').appendChild(note);
+    //document.getElementById('mainContent').appendChild(note);
   });
 });
 
@@ -124,4 +132,15 @@ function startFloating(note) {
   }
 
   requestAnimationFrame(animate);
+}
+
+function copyEmail() {
+  const email = "error1998pl@gmail.com";
+  navigator.clipboard.writeText(email)
+    .then(() => {
+      alert("Skopiowano: " + email);
+    })
+    .catch(err => {
+      alert("Nie udało się skopiować: " + err);
+    });
 }
